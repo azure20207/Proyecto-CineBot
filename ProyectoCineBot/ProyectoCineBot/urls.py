@@ -19,13 +19,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
-
 from appcinebot.views import index
-
+from appcinebot import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cinebot/', index),
+    path('buscar/',views.buscar),
 
 ]
 

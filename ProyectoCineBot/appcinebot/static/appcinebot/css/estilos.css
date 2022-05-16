@@ -13,13 +13,33 @@
     padding: 1rem;
     border: solid 0.5px;
     height: 70px;
+  
 }
 
+.glyphicon{
+   
+    color: rgb(255, 255, 255);
+}
+
+button :hover{
+    color: rgb(160, 119, 255);
+    
+}
+
+.d-flex{
+    margin-left: 2em;
+}
+
+#centrado{
+    text-align: center;
+}
 
 
 .navbar .navbar-brand{
     font-size: 1.4rem;
     height: 8px; 
+  
+    
 }
 
 #navbarSupportedContent > ul > li:nth-child(n) > a{
