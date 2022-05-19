@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Pelicula
+from .models import Pelicula, Genero
 
 
 
@@ -8,7 +8,8 @@ from .models import Pelicula
 
 def index(request):
     peliculas = Pelicula.objects.all()
-    context= {'peliculas':peliculas}
+    generos = Genero.objects.all()
+    context= {'peliculas':peliculas,'generos':generos}
     return render(request, "index.html", context)
 
 def list(request):
@@ -16,13 +17,26 @@ def list(request):
   return render(request, "index.html", {'imagen': imagen})
 
 def buscar(request):
-    if request.GET["txt_pelicula"]:
+
+    generos = Genero.objects.all()
+
+    if request.GET[ "exampleRadios"] and request.GET["txt_pelicula"]:
+        genero = request.GET["exampleRadios"]
+        pelicula = request.GET["txt_pelicula"]
+        peliculas = Pelicula.objects.filter(nombre__icontains=pelicula,genero__icontains=genero)
+        context= {'peliculas':peliculas,"query":pelicula,'generos':generos}
+        return render(request,"searchmovie.html",context)
+
+    elif request.GET["txt_pelicula"]: 
         pelicula = request.GET["txt_pelicula"]
         peliculas = Pelicula.objects.filter(nombre__icontains=pelicula)
-        return render(request,"searchmovie.html",{"peliculas":peliculas,"query":pelicula})
+        context= {'peliculas':peliculas,"query":pelicula,'generos':generos}
+        return render(request,"searchmovie.html",context)
+    
     else:
         mensaje = "Debe ingresar nombre de la pelicula"
         return HttpResponse(mensaje)
+
 
 
 
