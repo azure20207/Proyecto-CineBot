@@ -51,34 +51,34 @@
 
    
     <br>
-    <div class="galeria">
-       <h2 id="centrado"> Pelicula buscada es : {{query}}  </h2>
-        <br>
-        <div class="foto" >
-           
-            
-            {% if peliculas %}
-                {% for objeto in peliculas %} 
-                     
-                <img class="logo-nosotros img-fluid" src="{{ objeto.imagen.url}}" alt="">
-            <div class="pie" >
-                <h1>Nombre : {{objeto.nombre}}</h1>
-                <h1>Sinopsis : {{objeto.sinopsis}}</h1>
-                <h1>Año : {{objeto.año}}</h1>
-                <h1>Genero : {{objeto.genero}}</h1>
-                <h1>Actores : {{objeto.actores}}</h1>
-                <h1>Puntuacion : {{objeto.puntuacion}}</h1>
-                <h1>Visualizacion : {{objeto.visualizacion}}</h1>
-                <br>
-                   
-            </div>
+    
+    
+    <div class="container-dos">
+      <h2 id="centrado"> Pelicula buscada es : {{query}}  </h2> 
+      <br>
+      {% if peliculas %}
+      {% for objeto in peliculas %} 
+      <div class="galeria-buscador">
+        
+        <div class="foto-buscador" >
+          <img class="logo-nosotros img-fluid" src="{{ objeto.imagen.url}}" alt="">
+          <div class="pie-buscador" >
+              <h1>Nombre : {{objeto.nombre}}</h1>
+              <h1>Sinopsis : {{objeto.sinopsis}}</h1>
+              <h1>Año : {{objeto.año}}</h1>
+              <h1>Genero : {{objeto.genero}}</h1>
+              <h1>Actores : {{objeto.actores}}</h1>
+              <h1>Puntuacion : {{objeto.puntuacion}}</h1>
+              <h1>Visualizacion : {{objeto.visualizacion}}</h1>
+              <br>
+          </div>
         </div>
+      </div>
+      {% endfor %}
+      {% else %}
+    <h2 id="centrado">No existe pelicula buscada...</h2>
+      {% endif %}
     </div>
-            {% endfor %}
-            {%else %}
-            <h2 id="centrado">No existe pelicula buscada...</h2>
-            {% endif %}
-
-   
+    
 </body>
 </html>

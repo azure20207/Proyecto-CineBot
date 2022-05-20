@@ -32,6 +32,8 @@ button :hover{
 
 #centrado{
     text-align: center;
+    justify-content: center;
+    
 }
 
 
@@ -266,7 +268,6 @@ td{
 
 .foto{
     display: flex;
-    justify-content: center;
     float: left;
     margin: 1em;
     padding: 1em;
@@ -275,17 +276,39 @@ td{
     justify-content: space-around;
 }
 
+.foto-buscador{
+    display: flex;
+    margin: 1em;
+    padding: 1em;
+    box-shadow: 0 0 2rem 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+    justify-content: center;
+}
 
+.galeria-buscador{
+    max-width: 100%; 
+    margin-right: 10px;
+    display: contents;
+  }
 
 div.container{
     overflow: hidden;
     margin: 65px auto;
     margin-right: 40px;
-   
-    
-
+ 
 }
-
+div.container-dos{
+    margin: 135px;
+    display: grid;
+    
+    
+}
+.pie-buscador{
+    text-align: justify;
+    padding: 10px;
+    max-width: 60rem;
+    min-width: 60rem;
+}
 
 .pie{
     text-align: justify;
@@ -403,3 +426,5 @@ h1{
     z-index: 1;
   
   }
+
+  
