@@ -22,9 +22,11 @@ from django.conf.urls.static import static
 from appcinebot.views import index
 from appcinebot import views
 urlpatterns = [
+    path('', index),
     path('admin/', admin.site.urls),
     path('cinebot/', index),
     path('buscar/',views.buscar),
+    path('vistaporgenero/',views.vistaporgeneros),
 
 ]
 

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+    
+
+    {% block content %}
+    {% load static %}
+
+    <div class="container">
+
+    <h2 class="nosotros-descripcion">CATALOGO <span class="tienda-color"> PELICULAS {{ generoEscogido }}</span></h2>
+
+    <br>
+
+    {% if peliculas %}
+    {% for pelicula in peliculas %}
+    {% if pelicula.genero == generoEscogido %}
+    <div class="container-fluid">
+      <div class="foto">
+          <img class="logo-nosotros img-fluid" src="{{ pelicula.imagen.url}}" alt="">
+          <div class="pie">
+              <h1>Nombre: {{ pelicula.nombre}}</h1>
+              <h1>Sinopsis: {{ pelicula.sinopsis}}</h1>
+              <h1>Año: {{ pelicula.año}}</h1>
+              <h1>Genero: {{ pelicula.genero}}</h1>
+              <h1>Actores: {{ pelicula.actores}}</h1>
+              <h1>Visualizacion: {{ pelicula.visualizacion}}</h1>
+              <h1>Puntuacion: {{ pelicula.puntuacion}}</h1>
+                          
+          </div>
+      </div>
+    </div>
+    {% endif %} 
+    {% endfor %} 
+    {% endif %} 
+    </div>
+
+  {% endblock content %}

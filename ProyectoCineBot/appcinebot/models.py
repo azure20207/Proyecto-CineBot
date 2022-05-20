@@ -13,4 +13,8 @@ class Pelicula(models.Model):
     visualizacion=models.CharField(max_length=50)
     imagen=models.ImageField(upload_to="peliculas", null=True)
 
+class Genero(models.Model):
+    nombre=models.CharField(max_length=50)
+
+
     
