@@ -182,21 +182,23 @@
             {% if peliculas %}
             {% for pelicula in peliculas %}
             
-            <div class="container-fluid">
-                <div class="foto">
-                    <img class="logo-nosotros img-fluid" src="{{ pelicula.imagen.url}}" alt="">
-                    <div class="pie">
-                        <h1>Nombre: {{ pelicula.nombre}}</h1>
-                        <h1>Sinopsis: {{ pelicula.sinopsis}}</h1>
-                        <h1>Año: {{ pelicula.año}}</h1>
-                        <h1>Genero: {{ pelicula.genero}}</h1>
-                        <h1>Actores: {{ pelicula.actores}}</h1>
-                        <h1>Visualizacion: {{ pelicula.visualizacion}}</h1>
-                        <h1>Puntuacion: {{ pelicula.puntuacion}}</h1>
-                        
-                        
-                    </div>
+
+         
+
+            <div class="galeria">
+              <div class="foto">
+                <img class="logo-nosotros img-fluid" src="{{ pelicula.imagen.url}}" alt="">
+                <div class="pie">
+                    <h1>Nombre: {{ pelicula.nombre}}</h1>
+                    <h1>Sinopsis: {{ pelicula.sinopsis}}</h1>
+                    <h1>Año: {{ pelicula.año}}</h1>
+                    <h1>Genero: {{ pelicula.genero}}</h1>
+                    <h1>Actores: {{ pelicula.actores}}</h1>
+                    <h1>Visualizacion: {{ pelicula.visualizacion}}</h1>
+                    <h1>Puntuacion: {{ pelicula.puntuacion}}</h1>
+
                 </div>
+              </div>
             </div>
             {% endfor %} 
             {% endif %} 
