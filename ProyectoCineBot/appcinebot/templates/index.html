@@ -1,16 +1,124 @@
-{% extends 'base.html' %}
 {% load static %}
-    
-  {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css">
+    <link rel="icon" href="{% static 'appcinebot/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'appcinebot/css/estilos.css' %}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>CineBot</title>
 
+    
+</head>
+    <body>
+
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-md navbar navbar-dark bg-dark sticky-top ">
+            <div class="container-fluid">
+            <a class="navbar-left" href="/cinebot"><img class="logo" src="{% static 'appcinebot/img/logoBot.png' %}" alt="" ></a><br>
+                <h1 class="titulo-logo">CineBot</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0" >
+                <li class="nav-item">
+                    <a class="nav-link" href="/cinebot">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LOS MAS VISTOS</a>
+                </li>  
+                <li class="nav-item">
+                    <a class="nav-link" href="#">QUIENES SOMOS</a>
+                </li> 
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          VISTA POR GENEROS
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          {% if generos %}
+                            {% for genero in generos %} 
+                                <a class="dropdown-item" href="/vistaporgenero/?generoElegido={{ genero.nombre }}" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}
+                                    <!--button class="btn btn-black" href="vistaporgenero/" type="submit" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}</button-->
+                                </a>
+                            {% endfor %} 
+                          {% endif %}
+                        </div>
+                      </div>
+                </li>
+
+                
+                </ul>
+                    
+                
+                <form class="d-flex" action="/buscar/" method="GET">
+                    
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Género
+                        </button>
+                        
+                        <div class="dropdown-menu">
+
+                        
+                        <a class="dropdown-item" href="#">
+                            <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="" >
+                                <label class="form-check-label" for="exampleRadios1">Todos los generos</label>
+                        </div>  
+                                </div>
+                        </a>     
+                        <div class="dropdown-divider"></div>
+
+                        {% if generos %}
+                        {% for genero in generos %}
+                        
+                        <a class="dropdown-item" href="#">
+                            <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios{{ genero.nombre }}" value="{{ genero.nombre }}" >
+                                <label class="form-check-label" for="exampleRadios{{ genero.nombre }}">{{ genero.nombre }} </label>
+                            </div>  
+                            </div>
+                        </a>
+                        {% endfor %} 
+                        {% endif %}
+    
+                        
+    
+                        </div>
+                    </div>
+
+                    <input class="form-control me-2" type="search" name="txt_pelicula" placeholder="Buscar Pelicula ..." aria-label="Search">
+                    <button type="search" class="btn btn-black">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                
+                </form>
+                
+
+            </div>
+            
+            </div>
+        </nav> 
+    
     <!-- CAROUSEL -->
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1" aria-label="Slide 2"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2" aria-label="Slide 3"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="3" aria-label="Slide 4"></li>
+        </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="{% static 'appcinebot/img/inception.png' %}" class="d-block w-100" height="437" alt="...">
@@ -52,7 +160,7 @@
 
       <div class="shadow">
         <br>
-    </div>
+      </div>
 
       <section class="nosotros py-5">
         <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
@@ -74,7 +182,7 @@
             {% if peliculas %}
             {% for pelicula in peliculas %}
             
-            <div class="galeria">
+            <div class="container-fluid">
                 <div class="foto">
                     <img class="logo-nosotros img-fluid" src="{{ pelicula.imagen.url}}" alt="">
                     <div class="pie">
@@ -97,4 +205,46 @@
         </div>
       
     </section>
-  {% endblock content %}
+
+  </body>
+    
+  <footer>
+      <section class="objetivo">
+          <div class="col mx-auto align-items-center">
+              <div class="text-center">
+                  <br>
+                  <br>
+                  <h5 class="nosotros-titulo">OBJETIVO</h5> 
+                  <h2 class="nosotros-descripcion">NUESTROS SERVICIOS</h2>
+                  <p class="objetivo-texto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque illo amet magnam cumque soluta deserunt dolorum necessitatibus magni exercitationem minima nulla quo, reiciendis nesciunt dicta saepe aliquid. Similique, reprehenderit maiores!</p>
+              </div>
+          
+          </div>
+          <br>
+          <br>
+          <br>
+      </section>
+  </footer>
+
+
+  <!-- HACIA ARRIBA -->
+  <section class="button__top">
+      <div class="py-5 text-center">
+          <a class="back__button" href="#"><i class="uil uil-angle-up"></i></a>
+      </div>
+  </section>
+
+  <!-- SWIPER -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  
+  <!-- JS -->
+  <script src="{% static 'appcinebot/js/main.js' %}"></script>
+
+  <!-- WSCRIPT BOOTSTRAP -->
+  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</html>

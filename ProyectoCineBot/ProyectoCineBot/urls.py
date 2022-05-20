@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cinebot/', index),
     path('buscar/',views.buscar),
+    path('vistaporgenero/',views.vistaporgeneros),
 
 ]
 

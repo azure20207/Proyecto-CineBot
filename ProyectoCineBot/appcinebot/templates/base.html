@@ -20,7 +20,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-md navbar navbar-dark bg-dark sticky-top ">
             <div class="container-fluid">
-            <a class="navbar-left" href="/"><img class="logo" src="{% static 'appcinebot/img/logoBot.png' %}" alt="" ></a><br>
+            <a class="navbar-left" href="/cinebot"><img class="logo" src="{% static 'appcinebot/img/logoBot.png' %}" alt="" ></a><br>
                 <h1 class="titulo-logo">CineBot</h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,19 +30,36 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0" >
                 <li class="nav-item">
-                    <a class="nav-link" href="/">INICIO</a>
+                    <a class="nav-link" href="/cinebot">INICIO</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">LOS MAS VISTOS</a>
                 </li>  
                 <li class="nav-item">
                     <a class="nav-link" href="#">QUIENES SOMOS</a>
-                </li>             
+                </li> 
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          VISTA POR GENEROS
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          {% if generos %}
+                            {% for genero in generos %} 
+                                <a class="dropdown-item" href="/vistaporgenero/?generoElegido={{ genero.nombre }}" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}
+                                    <!--button class="btn btn-black" href="vistaporgenero/" type="submit" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}</button-->
+                                </a>
+                            {% endfor %} 
+                          {% endif %}
+                        </div>
+                      </div>
+                </li>
+
                 
                 </ul>
                     
                 
-                    <form class="d-flex" action="/buscar/" method="GET">
+                <form class="d-flex" action="/buscar/" method="GET">
                     
                     <div class="btn-group">
                         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,7 +103,7 @@
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </button>
                 
-                    </form>
+                </form>
                 
 
             </div>
@@ -95,9 +112,8 @@
         </nav> 
     
     {% block content %}
+
     {% endblock content %}
-
-
 
     </body>
     
@@ -123,7 +139,7 @@
     <!-- HACIA ARRIBA -->
     <section class="button__top">
         <div class="py-5 text-center">
-            <a class="back__button" href="/"><i class="uil uil-angle-up"></i></a>
+            <a class="back__button" href="#"><i class="uil uil-angle-up"></i></a>
         </div>
     </section>
 
