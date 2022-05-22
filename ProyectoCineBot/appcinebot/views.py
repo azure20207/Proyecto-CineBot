@@ -17,8 +17,12 @@ def index(request):
 
 
 def list(request):
-  imagen = Pelicula.objects.all()
-  return render(request, "index.html", {'imagen': imagen})
+    try:
+        imagen = Pelicula.objects.all()
+        return render(request, "index.html", {'imagen': imagen})
+    except:
+        mensaje = "Problemas de carga en lista."
+        return HttpResponse(mensaje)
 
 def buscar(request):
 
