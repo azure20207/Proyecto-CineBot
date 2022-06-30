@@ -23,7 +23,7 @@
     <body>
 
         <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-md navbar navbar-dark bg-dark sticky-top ">
+        <nav class="navbar navbar-expand-md navbar navbar-dark bg-dark sticky-top " >
             <div class="container-fluid">
             <a class="navbar-left" href="/cinebot"><img class="logo" src="{% static 'appcinebot/img/logoBot.png' %}" alt="" ></a><br>
                 <h1 class="titulo-logo">CineBot</h1>
@@ -33,7 +33,7 @@
 
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0" >
+                <ul class="navbar-nav mr-auto" >
                 <li class="nav-item">
                     <a class="nav-link" href="/cinebot">INICIO</a>
                 </li>
@@ -43,39 +43,43 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">QUIENES SOMOS</a>
                 </li> 
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown">
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           VISTA POR GENEROS
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           {% if generos %}
                             {% for genero in generos %} 
-                                <a class="dropdown-item" href="/vistaporgenero/?generoElegido={{ genero.nombre }}" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}
+                            <li><a class="dropdown-item" href="/vistaporgenero/?generoElegido={{ genero.nombre }}" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}
                                     <!--button class="btn btn-black" href="vistaporgenero/" type="submit" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}</button-->
-                                </a>
+                                </a></li>
                             {% endfor %} 
                           {% endif %}
-                        </div>
-                      </div>
+                            </ul>
+                        </li>
                 </li>
 
                 
-                </ul>
+               
                 
                 {%if user.is_authenticated%}
-                <li>
-                  <a href="#">Usuario: {{user.username}} </a>
+                <li class="nav-item">
+                  <a class="nav-link"  style="color: white " href="#">Usuario: {{user.username}} </a>
                 </li>
-                <li>
-                  <button type="button" class="btn btn-secondary"> <a  style="color: white " href="{%url 'logout'%}">Cerrar Sesion</a></button>
+                <li class="nav-item"> 
+                  <a class="nav-link"  style="color: white " href="{%url 'logout'%}">Cerrar Sesion</a>
                 </li>
                 {% else %}
-           
-                <button type="button" class="btn btn-primary"><a style="color: white " href="{% url 'social:begin' 'facebook' %}">Login con facebook</a></button>
+                <li class="nav-item">
+                <a class="nav-link"  style="color: white " style="color: white " href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
+                </li>
+                </ul>
                 {%endif%}
+
+
                 
-                <form class="d-flex" action="/buscar/" method="GET">
+                <form class="d-flex" style  = "position: relative; float: left;  "  action="/buscar/" method="GET">
                     
                     <div class="btn-group">
                         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,28 +105,28 @@
                         <a class="dropdown-item" href="#">
                             <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios{{ genero.nombre }}" value="{{ genero.nombre }}" >
+                                <input style="width: 20%;position: relative;" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios{{ genero.nombre }}" value="{{ genero.nombre }}" >
                                 <label class="form-check-label" for="exampleRadios{{ genero.nombre }}">{{ genero.nombre }} </label>
                             </div>  
-                            </div>
-                        </a>
-                        {% endfor %} 
-                        {% endif %}
-    
-                        
-    
                         </div>
-                    </div>
+                        {% endfor %} 
+                    </a>
+                    
+                    {% endif %}
+                    
+                        
 
+                    </div>
+                </div>
+                <button type="search" class="btn btn-black">
                     <input class="form-control me-2" type="search" name="txt_pelicula" placeholder="Buscar Pelicula ..." aria-label="Search">
-                    <button type="search" class="btn btn-black">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    </button>
-                
+                </button>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </form>
                 
+                
 
-            </div>
+             </div>
             
             </div>
         </nav> 

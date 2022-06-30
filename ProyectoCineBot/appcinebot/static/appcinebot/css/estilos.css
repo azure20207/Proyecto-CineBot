@@ -13,6 +13,10 @@
     padding: 1rem;
     border: solid 0.5px;
     height: 70px;
+    position: relative ;
+    z-index : 100;
+    
+   
   
 }
 

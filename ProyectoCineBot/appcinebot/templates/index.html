@@ -40,43 +40,44 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">QUIENES SOMOS</a>
                 </li> 
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          VISTA POR GENEROS
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          {% if generos %}
-                            {% for genero in generos %} 
-                                <a class="dropdown-item" href="/vistaporgenero/?generoElegido={{ genero.nombre }}" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}
-                                    <!--button class="btn btn-black" href="vistaporgenero/" type="submit" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}</button-->
-                                </a>
-                            {% endfor %} 
-                          {% endif %}
-                        </div>
-                      </div>
-                </li>
+                <li class="nav-item dropdown">
+                  <li class="dropdown">
+                      <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        VISTA POR GENEROS
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% if generos %}
+                          {% for genero in generos %} 
+                          <li><a class="dropdown-item" href="/vistaporgenero/?generoElegido={{ genero.nombre }}" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}
+                                  <!--button class="btn btn-black" href="vistaporgenero/" type="submit" name="generoElegido" id="generoElegido" value="{{ genero.nombre }}">{{ genero.nombre }}</button-->
+                              </a></li>
+                          {% endfor %} 
+                        {% endif %}
+                          </ul>
+                      </li>
+              </li>
             
 
                 
-                </ul>
-                {%if user.is_authenticated%}
-                <li>
-                  <a href="#">Usuario: {{user.username}} </a>
-                </li>
-                <li>
-                  <button type="button" class="btn btn-secondary"> <a  style="color: white " href="{%url 'logout'%}">Cerrar Sesion</a></button>
-                </li>
-                {% else %}
-           
-                <button type="button" class="btn btn-primary"><a style="color: white " href="{% url 'social:begin' 'facebook' %}">Login con facebook</a></button>
-                {%endif%}
+              {%if user.is_authenticated%}
+              <li class="nav-item">
+                <a class="nav-link"  style="color: white " href="#">Usuario: {{user.username}} </a>
+              </li>
+              <li class="nav-item"> 
+                <a class="nav-link"  style="color: white " href="{%url 'logout'%}">Cerrar Sesion</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+              <a class="nav-link"  style="color: white " style="color: white " href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
+              </li>
+              </ul>
+              {%endif%}
 
                 
                 <form class="d-flex" action="/buscar/" method="GET">
                     
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div s class="btn-group">
+                        <button  type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Género
                         </button>
                         
@@ -99,7 +100,7 @@
                         <a class="dropdown-item" href="#">
                             <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios{{ genero.nombre }}" value="{{ genero.nombre }}" >
+                                <input style="width: 20%;position: relative;"class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios{{ genero.nombre }}" value="{{ genero.nombre }}" >
                                 <label class="form-check-label" for="exampleRadios{{ genero.nombre }}">{{ genero.nombre }} </label>
                             </div>  
                             </div>
@@ -135,14 +136,14 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{% static 'appcinebot/img/inception.png' %}" class="d-block w-100" height="437" alt="...">
+            <img style= " height: 5%;" src="{% static 'appcinebot/img/inception.png' %}" class="d-block w-100" height="437" alt="...">
             <div class="carousel-caption d-none d-md-block">
              
             </div>
             
           </div>
           <div class="carousel-item ">
-            <img src="{% static 'appcinebot/img/avengers.png' %}" class="d-block w-100" height="437" alt="...">
+            <img style= " height: 5%;"src="{% static 'appcinebot/img/avengers.png' %}" class="d-block w-100" height="437" alt="...">
             <div class="carousel-caption d-none d-md-block">
               
             </div>
@@ -150,13 +151,13 @@
           </div>
         
           <div class="carousel-item">
-            <img src="{% static 'appcinebot/img/aquaman.png' %}" class="d-block w-100" height="437" alt="...">
+            <img style= " height: 5%;" src="{% static 'appcinebot/img/aquaman.png' %}" class="d-block w-100" height="437" alt="...">
             <div class="carousel-caption d-none d-md-block">
              
             </div>
           </div>
           <div class="carousel-item">
-            <img src="{% static 'appcinebot/img/thedarknightrises.png' %}" class="d-block w-100" height="437" alt="...">
+            <img style= " height: 5%;" src="{% static 'appcinebot/img/thedarknightrises.png' %}" class="d-block w-100" height="437" alt="...">
             <div class="carousel-caption d-none d-md-block">
              
             </div>
@@ -211,7 +212,7 @@
                     <h1>Visualizacion: {{ pelicula.visualizacion}}</h1>
                     <h1>Puntuacion: {{ pelicula.puntuacion}}</h1>
                     <button type="button" class="btn btn-dark">
-                      <a href="/pelicula/?txt_pelicula={{ pelicula.nombre }}"  style="color: white " name="txt_pelicula" id="txt_pelicula" value="{{ pelicula.nombre }}"> + de {{ pelicula.nombre }} </a>
+                      <a href="/pelicula/?txt_pelicula={{ pelicula.nombre }}"  style="color: white " name="txt_pelicula" id="txt_pelicula" value="{{ pelicula.nombre }}"> Mas de {{ pelicula.nombre }} </a>
                       </button> 
 
                 </div>

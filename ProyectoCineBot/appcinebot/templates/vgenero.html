@@ -16,7 +16,7 @@
     {% if pelicula.genero == generoEscogido %}
     <div class="container-fluid">
       <div class="foto">
-          <img class="logo-nosotros img-fluid" src="{{ pelicula.imagen.url}}" alt="">
+          <img style  = "float: left; position: relative; width:90%;" class="logo-nosotros img-fluid" src="{{ pelicula.imagen.url}}" alt="">
           <div class="pie">
               <h1>Nombre: {{ pelicula.nombre}}</h1>
               <h1>Sinopsis: {{ pelicula.sinopsis}}</h1>
@@ -27,7 +27,7 @@
               <h1>Puntuacion: {{ pelicula.puntuacion}}</h1>
 
               <button type="button" class="btn btn-dark">
-                <a href="/pelicula/?txt_pelicula={{ pelicula.nombre }}"  style="color: white " name="txt_pelicula" id="txt_pelicula" value="{{ pelicula.nombre }}"> + de {{ pelicula.nombre }} </a>
+                <a href="/pelicula/?txt_pelicula={{ pelicula.nombre }}"  style="color: white " name="txt_pelicula" id="txt_pelicula" value="{{ pelicula.nombre }}"> Mas de {{ pelicula.nombre }} </a>
                 </button>    
           </div>
       </div>

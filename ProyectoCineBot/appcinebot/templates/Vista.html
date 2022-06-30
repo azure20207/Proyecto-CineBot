@@ -4,19 +4,19 @@
 
 {% block content %}
   {% load static %}
-  
+  <div style  = "position: relative " style  = "z-index: 100">
     <br>
 
     
-      <h2 id="centrado"> Pelicula buscada es xx : {{query}}  </h2> 
+      <h2 id="centrado"> Pelicula buscada es  : {{query}}  </h2> 
       <br>
       {% if peliculas %}
       {% for objeto in peliculas %} 
       
         
-        
-         <div> <img class="logo-nosotros img-fluid" src="{{ objeto.imagen.url}}" alt=""></div>
-          <div>
+            
+             <div > <img style  = "position: relative; width:20%;float: left;  " class="logo-nosotros img-fluid" src="{{ objeto.imagen.url}}" alt=""></div>
+            <div style = "position: relative; width:80%; float: right; height:300px;">
               <h1>Nombre : {{objeto.nombre}}</h1>
               <h1>Sinopsis : {{objeto.sinopsis}}</h1>
               <h1>Año : {{objeto.año}}</h1>
@@ -32,7 +32,8 @@
       {% else %}
     <h2 id="centrado">No existe pelicula buscada...</h2>
       {% endif %}
-    
+    </br>
+  </div>
   
 {% endblock content %}  
 
