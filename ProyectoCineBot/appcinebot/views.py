@@ -65,6 +65,38 @@ def vistaporgeneros(request):
 
 
 
+def mostrarP(request):
+
+    generos = Genero.objects.all()
+
+    try:
+        if request.GET["txt_pelicula"]:
+            try:
+                if request.GET["exampleRadios"]:
+                    genero = request.GET["exampleRadios"]
+                    pelicula = request.GET["txt_pelicula"]
+                    peliculas = Pelicula.objects.filter(nombre__icontains=pelicula,genero__icontains=genero)
+                    context= {'peliculas':peliculas,"query":pelicula,'generos':generos}
+                    return render(request,"Vista.html",context)
+            except:
+                pelicula = request.GET["txt_pelicula"]
+                peliculas = Pelicula.objects.filter(nombre__icontains=pelicula)
+                context= {'peliculas':peliculas,"query":pelicula,'generos':generos}
+                return render(request,"Vista.html",context)
+        
+        else:
+            mensaje = "Debe ingresar nombre de la pelicula"
+            return HttpResponse(mensaje)
+    except:
+        mensaje = "Debe ingresar nombre de la pelicula"
+        return HttpResponse(mensaje)
+
+
+
+
+
+
+
 
 
 

@@ -25,7 +25,10 @@
               <h1>Actores: {{ pelicula.actores}}</h1>
               <h1>Visualizacion: {{ pelicula.visualizacion}}</h1>
               <h1>Puntuacion: {{ pelicula.puntuacion}}</h1>
-                          
+
+              <button type="button" class="btn btn-dark">
+                <a href="/pelicula/?txt_pelicula={{ pelicula.nombre }}"  style="color: white " name="txt_pelicula" id="txt_pelicula" value="{{ pelicula.nombre }}"> + de {{ pelicula.nombre }} </a>
+                </button>    
           </div>
       </div>
     </div>

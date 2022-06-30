@@ -1,8 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
- 
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,10 +56,22 @@
                         </div>
                       </div>
                 </li>
+            
 
                 
                 </ul>
-                    
+                {%if user.is_authenticated%}
+                <li>
+                  <a href="#">Usuario: {{user.username}} </a>
+                </li>
+                <li>
+                  <button type="button" class="btn btn-secondary"> <a  style="color: white " href="{%url 'logout'%}">Cerrar Sesion</a></button>
+                </li>
+                {% else %}
+           
+                <button type="button" class="btn btn-primary"><a style="color: white " href="{% url 'social:begin' 'facebook' %}">Login con facebook</a></button>
+                {%endif%}
+
                 
                 <form class="d-flex" action="/buscar/" method="GET">
                     
@@ -196,6 +210,9 @@
                     <h1>Actores: {{ pelicula.actores}}</h1>
                     <h1>Visualizacion: {{ pelicula.visualizacion}}</h1>
                     <h1>Puntuacion: {{ pelicula.puntuacion}}</h1>
+                    <button type="button" class="btn btn-dark">
+                      <a href="/pelicula/?txt_pelicula={{ pelicula.nombre }}"  style="color: white " name="txt_pelicula" id="txt_pelicula" value="{{ pelicula.nombre }}"> + de {{ pelicula.nombre }} </a>
+                      </button> 
 
                 </div>
               </div>
@@ -227,7 +244,7 @@
           <br>
       </section>
   </footer>
-
+ 
 
   <!-- HACIA ARRIBA -->
   <section class="button__top">

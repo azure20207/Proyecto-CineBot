@@ -3,6 +3,10 @@
 <html lang="en">
 <head>
  
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v14.0&appId=1244291516401443&autoLogAppEvents=1" nonce="km9iVoUI"></script>
+
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>CineBot</title>
 
+    
     
 </head>
     <body>
@@ -57,7 +62,18 @@
 
                 
                 </ul>
-                    
+                
+                {%if user.is_authenticated%}
+                <li>
+                  <a href="#">Usuario: {{user.username}} </a>
+                </li>
+                <li>
+                  <button type="button" class="btn btn-secondary"> <a  style="color: white " href="{%url 'logout'%}">Cerrar Sesion</a></button>
+                </li>
+                {% else %}
+           
+                <button type="button" class="btn btn-primary"><a style="color: white " href="{% url 'social:begin' 'facebook' %}">Login con facebook</a></button>
+                {%endif%}
                 
                 <form class="d-flex" action="/buscar/" method="GET">
                     

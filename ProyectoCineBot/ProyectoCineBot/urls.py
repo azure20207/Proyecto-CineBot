@@ -28,6 +28,12 @@ urlpatterns = [
     path('buscar/',views.buscar),
     path('vistaporgenero/',views.vistaporgeneros),
 
+    path('pelicula/', views.mostrarP),
+    
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('oauth/', include('social_django.urls', namespace='social')),
+
+
 ]
 
 if settings.DEBUG :

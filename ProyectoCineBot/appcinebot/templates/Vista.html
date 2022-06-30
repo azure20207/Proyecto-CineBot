@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+  {% load static %}
+  
+    <br>
+
+    
+      <h2 id="centrado"> Pelicula buscada es xx : {{query}}  </h2> 
+      <br>
+      {% if peliculas %}
+      {% for objeto in peliculas %} 
+      
+        
+        
+         <div> <img class="logo-nosotros img-fluid" src="{{ objeto.imagen.url}}" alt=""></div>
+          <div>
+              <h1>Nombre : {{objeto.nombre}}</h1>
+              <h1>Sinopsis : {{objeto.sinopsis}}</h1>
+              <h1>Año : {{objeto.año}}</h1>
+              <h1>Genero : {{objeto.genero}}</h1>
+              <h1>Actores : {{objeto.actores}}</h1>
+              <h1>Puntuacion : {{objeto.puntuacion}}</h1>
+              <h1>Visualizacion : {{objeto.visualizacion}}</h1>
+              <br>
+            </div>
+              <div class="fb-comments" data-href="https://caprinus.pythonanywhere.com/cinebot/{{query}}" data-width="" data-numposts="5"></div>
+      
+      {% endfor %}
+      {% else %}
+    <h2 id="centrado">No existe pelicula buscada...</h2>
+      {% endif %}
+    
+  
+{% endblock content %}  
+
+
+
+
