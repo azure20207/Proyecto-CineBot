@@ -41,10 +41,10 @@ def buscar(request):
         
         else:
             mensaje = "Debe ingresar nombre de la pelicula"
-            return HttpResponse(mensaje)
+            return render(request,"index.html")
     except:
         mensaje = "Debe ingresar nombre de la pelicula"
-        return HttpResponse(mensaje)
+        return render(request,"index.html")
 
 
 

@@ -13,8 +13,8 @@
       {% for objeto in peliculas %} 
       <div class="galeria-buscador">
         
-        <div class="foto-buscador" >
-          <img class="logo-nosotros img-fluid" src="{{ objeto.imagen.url}}" alt="">
+        <div style  = "float: left;" class="foto-buscador" >
+          <img style  = "float: left; position: relative; width:90%;" class="logo-nosotros img-fluid" src="{{ objeto.imagen.url}}" alt="">
           <div class="pie-buscador" >
               <h1>Nombre : {{objeto.nombre}}</h1>
               <h1>Sinopsis : {{objeto.sinopsis}}</h1>
